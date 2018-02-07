@@ -1,0 +1,24 @@
+// regles de pref
+// section 1 : setup et code utilisateur
+
+import java_cup.runtime.*;
+
+//section 2: terminaux et non terminaux
+// les terminaux sont fournis par jflex
+terminal NUM, PLUS, MOINS, PO, PF, FOIS;
+non terminal expr, term, facteur; 
+start with expr; 
+
+
+//section4: les regles 
+
+expr ::= expr PLUS term | term |
+	expr MOINS term ; 
+
+term ::= term FOIS facteur | facteur
+	;
+
+facteur ::= PO expr PF | NUM ; 
+
+
+//compil = java -jar ../java-cup-11b.jar fichier.cup
